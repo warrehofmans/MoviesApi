@@ -35,7 +35,7 @@ public class MovieDB {
 
     private void pathMovie(Movie movie){
         int index = IntStream.range(0, this.movies.size())
-                .filter(m -> movie.getId() == movie.getId())
+                .filter(m -> movie.getId().equals(movie.getId()))
                 .findFirst()
                 .orElse(-1);
         if(index != -1) this.movies.set(index,movie);

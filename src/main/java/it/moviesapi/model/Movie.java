@@ -3,7 +3,7 @@ package it.moviesapi.model;
 import java.util.Date;
 
 public class Movie {
-    private int id;
+    private String id;
     private String cover;
     private String[] genres;
     private Date releaseDate;
@@ -14,7 +14,7 @@ public class Movie {
     private boolean onWatchList;
     private boolean watched;
 
-    public Movie(int id, String cover, String[] genres, Date releaseDate, String title, int duration, TitleType titleType, Comment comment, boolean onWatchList, boolean watched) {
+    public Movie(String id, String cover, String[] genres, Date releaseDate, String title, int duration, TitleType titleType, Comment comment, boolean onWatchList, boolean watched) {
         this.id = id;
         this.cover = cover;
         this.genres = genres;
@@ -27,11 +27,11 @@ public class Movie {
         this.watched = watched;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
