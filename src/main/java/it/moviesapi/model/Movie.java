@@ -11,8 +11,10 @@ public class Movie {
     private int duration;
     private TitleType titleType;
     private  Comment comment;
+    private boolean onWatchList;
+    private boolean watched;
 
-    public Movie(int id, String cover, String[] genres, Date releaseDate, String title, int duration, TitleType titleType, Comment comment) {
+    public Movie(int id, String cover, String[] genres, Date releaseDate, String title, int duration, TitleType titleType, Comment comment, boolean onWatchList, boolean watched) {
         this.id = id;
         this.cover = cover;
         this.genres = genres;
@@ -21,6 +23,8 @@ public class Movie {
         this.duration = duration;
         this.titleType = titleType;
         this.comment = comment;
+        this.onWatchList = onWatchList;
+        this.watched = watched;
     }
 
     public int getId() {
@@ -85,5 +89,21 @@ public class Movie {
 
     public void setComment(Comment comment) {
         this.comment = comment;
+    }
+
+    public boolean isOnWatchList() {
+        return onWatchList;
+    }
+
+    public void setOnWatchList(boolean onWatchList) {
+        this.onWatchList = onWatchList;
+    }
+
+    public boolean isWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 }
