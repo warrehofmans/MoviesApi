@@ -12,37 +12,30 @@ import java.util.List;
 @RequestMapping("/api/movies")
 public class MovieController {
 
-    @PostMapping("")
-    public HttpStatus movieAction(@RequestBody Movie movie){
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Movie> movieAction(@RequestBody Movie movie){
         try{
             MovieDB.Movies().movieAction(movie);
-            return HttpStatus.OK;
+            return  new ResponseEntity<>(movie, HttpStatus.OK);
         }
         catch (Error e){
-            return HttpStatus.BAD_REQUEST;
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @GetMapping("/watched")
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Movie>> getWatchedMovie(){
         try{
-
-            return new ResponseEntity<>(MovieDB.Movies().getWatched(), HttpStatus.OK);
+            return new ResponseEntity<>(MovieDB.Movies().getAll(), HttpStatus.OK);
         }
         catch (Error e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @GetMapping("/watchList")
-    public ResponseEntity<List<Movie>> getWatchList(){
-        try{
-            return new ResponseEntity<>(MovieDB.Movies().getWatchList(), HttpStatus.OK);
-        }
-        catch (Error e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
 
 
 }

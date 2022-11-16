@@ -23,7 +23,9 @@ public class MovieDB {
     }
 
     public void movieAction(Movie movie){
-        if(this.movies.stream().filter(m -> m.getId() == movie.getId()).toList().size() > 0){
+        System.out.println(movie.getId());
+        System.out.println(this.movies.stream().filter(m -> m.getId().equals(movie.getId())).toList().size() > 0);
+        if(this.movies.stream().filter(m -> m.getId().equals(movie.getId())).toList().size() > 0){
             this.pathMovie(movie);
         } else{
             this.addMovie(movie);
@@ -35,17 +37,13 @@ public class MovieDB {
 
     private void pathMovie(Movie movie){
         int index = IntStream.range(0, this.movies.size())
-                .filter(m -> movie.getId().equals(movie.getId()))
+                .filter(m -> this.movies.get(m).getId().equals(movie.getId()))
                 .findFirst()
                 .orElse(-1);
         if(index != -1) this.movies.set(index,movie);
     }
 
-    public List<Movie> getWatchList(){
-        return this.movies.stream().filter(Movie::isOnWatchList).toList();
-    }
-
-    public List<Movie> getWatched(){
-        return this.movies.stream().filter(Movie::isWatched).toList();
+    public List<Movie> getAll(){
+        return this.movies;
     }
 }
